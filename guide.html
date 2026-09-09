@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I ❤ my job — คู่มือการใช้งาน</title>
+<meta name="description" content="คู่มือใช้งาน I love my job แบบง่ายๆ เข้าใจได้ในไม่กี่นาที" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Anuphan:wght@600;700&family=Sarabun:wght@400;500;600;700&display=swap" />
+<style>
+  :root{
+    --ink:#17132A; --paper:#FBF7EF; --violet:#6D4CFF; --coral:#FF4F81; --lime:#C6FF5E;
+    --charcoal:#1F1F23; --muted:#726F82; --border:#ECE4D8; --card-tint:#F2EFF9;
+  }
+  html{ scroll-behavior:smooth; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--paper); color:var(--charcoal); font-family:'Sarabun','Inter',sans-serif; }
+  a{ color:inherit; }
+  .wrap{ max-width:760px; margin:0 auto; padding:0 24px; }
+
+  /* ---------- sticky nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50; background:rgba(251,247,239,0.9); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{ max-width:760px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; gap:18px; }
+  .nav-brand{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px; margin-right:auto; white-space:nowrap; }
+  .nav-links{ display:flex; gap:6px; flex-wrap:wrap; }
+  .nav-links a{
+    text-decoration:none; font-size:13px; font-weight:600; color:var(--muted); font-family:'Sarabun',sans-serif;
+    padding:7px 12px; border-radius:999px; transition:background .15s, color .15s;
+  }
+  .nav-links a:hover{ background:var(--card-tint); color:var(--violet); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:linear-gradient(120deg,var(--ink),#3B2C79); color:#fff;
+    padding:56px 24px 64px; text-align:center;
+  }
+  .hero h1{ font-family:'Space Grotesk',sans-serif; font-size:clamp(30px,5vw,44px); font-weight:700; margin:0 0 8px; }
+  .hero h1 .heart{ color:var(--coral); }
+  .hero h1 .grad{ background:linear-gradient(90deg,#A98DFF,var(--coral)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .hero .tagline{ color:#C9C6E0; font-size:14px; margin:0 0 6px; }
+  .hero .desc{ color:#E4E1F5; font-size:16px; max-width:460px; margin:14px auto 28px; line-height:1.7; font-family:'Sarabun',sans-serif; }
+  .hero-ctas{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .hero-btn{
+    display:inline-flex; align-items:center; gap:8px; text-decoration:none; font-weight:700; font-size:14.5px; font-family:'Sarabun',sans-serif;
+    padding:13px 22px; border-radius:14px; transition:transform .15s;
+  }
+  .hero-btn:hover{ transform:translateY(-2px); }
+  .hero-btn.admin{ background:var(--lime); color:var(--ink); }
+  .hero-btn.member{ background:rgba(255,255,255,0.12); color:#fff; border:1px solid rgba(255,255,255,0.25); }
+
+  /* ---------- section headers ---------- */
+  .section{ padding:52px 0; }
+  .section-head{ text-align:center; margin-bottom:34px; }
+  .eyebrow{ font-family:'Sarabun',sans-serif; font-size:12.5px; letter-spacing:.2px; color:var(--violet); font-weight:600; margin-bottom:8px; }
+  .section-head h2{ font-family:'Anuphan','Space Grotesk',sans-serif; font-size:clamp(24px,4vw,32px); font-weight:700; margin:0 0 8px; }
+  .section-head p{ color:var(--muted); font-size:15.5px; margin:0; font-family:'Sarabun',sans-serif; }
+
+  /* ---------- step images (the real 1:1 instruction cards, shown as-is) ---------- */
+  .steps{ display:flex; flex-direction:column; gap:22px; }
+  .step-shot{ margin:0 auto; max-width:600px; }
+  .step-shot img{
+    width:100%; display:block; border-radius:22px;
+    box-shadow:0 14px 34px rgba(23,19,42,0.12);
+  }
+  .step-shot.danger img{ box-shadow:0 0 0 3px #FF4F81, 0 14px 34px rgba(23,19,42,0.12); }
+  .step-pair{ display:flex; flex-direction:column; gap:14px; align-items:center; }
+
+  /* ---------- faq ---------- */
+  .faq-list{ display:flex; flex-direction:column; gap:10px; }
+  details{ background:#fff; border:1px solid var(--border); border-radius:16px; padding:16px 18px; }
+  summary{ cursor:pointer; font-weight:700; font-size:15px; font-family:'Sarabun',sans-serif; list-style:none; display:flex; align-items:center; gap:10px; }
+  summary::-webkit-details-marker{ display:none; }
+  summary::before{ content:"＋"; color:var(--violet); font-weight:700; flex-shrink:0; width:16px; }
+  details[open] summary::before{ content:"－"; }
+  details p{ margin:10px 0 0 26px; color:var(--muted); font-size:14px; line-height:1.7; font-family:'Sarabun',sans-serif; }
+
+  /* ---------- footer / back to top ---------- */
+  footer{ text-align:center; padding:40px 24px 60px; }
+  .back-top{
+    display:inline-flex; align-items:center; gap:6px; text-decoration:none; font-size:13px; font-weight:600; font-family:'Sarabun',sans-serif;
+    color:var(--violet); background:var(--card-tint); padding:9px 16px; border-radius:999px;
+  }
+  .footer-note{ margin-top:18px; color:var(--muted); font-size:12.5px; font-family:'Sarabun',sans-serif; }
+
+  @media (max-width:720px){
+    .nav-links a{ padding:6px 9px; font-size:11.5px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">I <span style="color:var(--coral)">❤</span> my job</div>
+    <div class="nav-links">
+      <a href="#overview">ภาพรวม</a>
+      <a href="#admin-guide">คู่มือ Admin</a>
+      <a href="#member-guide">คู่มือสมาชิก</a>
+      <a href="#faq">คำถามที่พบบ่อย</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="overview">
+  <h1>I <span class="heart">❤</span> my <span class="grad">job</span></h1>
+  <div class="tagline">Look what we've been doing.</div>
+  <p class="desc">คู่มือง่ายๆ สำหรับเริ่มต้นใช้งาน I love my job ไม่ว่าคุณจะกำลังตั้งค่าทีม หรือแค่อยากบันทึกงานแรกของตัวเอง</p>
+  <div class="hero-ctas">
+    <a class="hero-btn admin" href="#admin-guide">👑 คู่มือ Admin</a>
+    <a class="hero-btn member" href="#member-guide">💼 คู่มือสมาชิก</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ ADMIN GUIDE ============ -->
+  <section class="section" id="admin-guide">
+    <div class="section-head">
+      <div class="eyebrow">สำหรับแอดมินทีม</div>
+      <h2>👑 คู่มือ Admin</h2>
+      <p>ตั้งค่าทีมของคุณ ดูแลทุกอย่างให้ราบรื่น</p>
+    </div>
+    <div class="steps">
+      <div class="step-shot"><img src="01-create-team.png" alt="ขั้นตอนที่ 01 — สร้างทีมใหม่" loading="lazy" /></div>
+      <div class="step-shot"><img src="02-team-information.png" alt="ขั้นตอนที่ 02 — กรอกข้อมูลเพื่อสร้างทีม" loading="lazy" /></div>
+      <div class="step-shot"><img src="03-invite-team.png" alt="ขั้นตอนที่ 03 — เชิญเพื่อนเข้าร่วมทีม" loading="lazy" /></div>
+      <div class="step-pair">
+        <div class="step-shot"><img src="04-manage-members_01.png" alt="ขั้นตอนที่ 04 — จัดการทีมใน Admin panel" loading="lazy" /></div>
+        <div class="step-shot"><img src="04-manage-members_02.png" alt="ขั้นตอนที่ 04.1 — จัดการสมาชิกในทีม" loading="lazy" /></div>
+      </div>
+      <div class="step-shot"><img src="05-job-types.png" alt="ขั้นตอนที่ 05 — เพิ่ม Job Type ประเภทงาน" loading="lazy" /></div>
+      <div class="step-shot"><img src="06-channels.png" alt="ขั้นตอนที่ 06 — เพิ่มช่องทางการดูแล" loading="lazy" /></div>
+      <div class="step-shot"><img src="07-export-backup.png" alt="ขั้นตอนที่ 07 — ดาวน์โหลดข้อมูล" loading="lazy" /></div>
+      <div class="step-shot danger"><img src="08-reset-data.png" alt="ขั้นตอนที่ 08 — รีเซ็ตข้อมูลทั้งหมด" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- ============ MEMBER GUIDE ============ -->
+  <section class="section" id="member-guide">
+    <div class="section-head">
+      <div class="eyebrow">สำหรับสมาชิกทุกคนในทีม</div>
+      <h2>💼 คู่มือสมาชิก</h2>
+      <p>เข้าสู่ระบบ บันทึกงานของคุณ และดูว่าทีมกำลังทำอะไรอยู่</p>
+    </div>
+    <div class="steps">
+      <div class="step-shot"><img src="09-login.png" alt="ขั้นตอนที่ 09 — เข้าสู่ระบบ" loading="lazy" /></div>
+      <div class="step-shot"><img src="10-join-team.png" alt="ขั้นตอนที่ 10 — เข้าร่วมทีม" loading="lazy" /></div>
+      <div class="step-shot"><img src="11-add-job.png" alt="ขั้นตอนที่ 11 — บันทึกงาน" loading="lazy" /></div>
+      <div class="step-shot"><img src="12-real-time-dashboard.png" alt="ขั้นตอนที่ 12 — ดูงานที่บันทึกแบบเรียลไทม์" loading="lazy" /></div>
+      <div class="step-shot"><img src="13-calendar.png" alt="ขั้นตอนที่ 13 — ดูงานแบบรายวัน" loading="lazy" /></div>
+      <div class="step-shot"><img src="14-key-event.png" alt="ขั้นตอนที่ 14 — เพิ่มเหตุการณ์สำคัญ" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq">
+    <div class="section-head">
+      <div class="eyebrow">เกร็ดความรู้</div>
+      <h2>คำถามที่พบบ่อย</h2>
+      <p>คำตอบง่ายๆ สำหรับคำถามที่มักถามกันบ่อยที่สุด</p>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>ข้อมูลทีมของฉันเป็นส่วนตัวไหม?</summary>
+        <p>ใช่ครับ — ข้อมูลของแต่ละทีมแยกจากกันโดยสมบูรณ์ ไม่มีใครนอกทีมของคุณเห็นงาน สมาชิก หรือการตั้งค่าของคุณได้</p>
+      </details>
+      <details>
+        <summary>เปลี่ยนรหัสผ่านทีหลังได้ไหม?</summary>
+        <p>ได้ครับ Admin สามารถรีเซ็ตรหัสผ่านของใครก็ได้ทุกเมื่อจาก Admin Panel รวมถึงรหัสผ่านของตัวเองด้วย</p>
+      </details>
+      <details>
+        <summary>ถ้าทำโค้ดทีมหายจะทำยังไง?</summary>
+        <p>ถามแอดมินของทีมได้เลย แอดมินสามารถ copy ลิงก์เชิญใหม่ได้ทุกเมื่อจากแถบเมนูด้านข้าง</p>
+      </details>
+      <details>
+        <summary>กด Reset ข้อมูลไปโดยไม่ตั้งใจ กู้คืนได้ไหม?</summary>
+        <p>ถ้าเพิ่ง Reset ไปไม่นาน Admin สามารถกู้คืนข้อมูลล่าสุดได้จากแท็บ Danger Zone ใน Admin Panel</p>
+      </details>
+      <details>
+        <summary>ทุกคนเห็นการอัปเดตทันทีไหม?</summary>
+        <p>ใช่ครับ — I love my job ซิงก์ข้อมูลแบบเรียลไทม์ ไม่ต้อง refresh หน้าเว็บเลย</p>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <a class="back-top" href="#overview">↑ กลับขึ้นบนสุด</a>
+  <div class="footer-note">I ❤ my job — เครื่องมือบันทึกงานง่ายๆ สำหรับทุกทีม</div>
+</footer>
+
+</body>
+</html>
